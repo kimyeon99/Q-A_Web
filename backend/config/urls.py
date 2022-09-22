@@ -15,13 +15,14 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from pybo.views import base_views
+from pybo.views import base_views, question_views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('pybo/', include('pybo.urls')),
     path('common/', include('common.urls')),
     path('', base_views.index, name='index'), # '/' 금지
+    path('question/vote/<int:question_id>/', question_views.question_vote, name='question_vote')
 ]
 
 # views.index는 views.py파일의 index함수를 의미
